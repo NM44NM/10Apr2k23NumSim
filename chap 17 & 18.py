@@ -163,3 +163,32 @@ plt.xlabel("x",size=20)
 plt.ylabel("y",size=20)
 plt.title("Nearest Neighbor Interpolitan",size=20)
 plt.show()
+#%%
+import numpy as np
+def my_double_exp(x, n):
+    for i, j in zip(x, n):
+        exp = 0
+        var = i
+        for order in range(j):
+            exp = exp + (var)**(2*order)/np.math.factorial(order)
+    print(f"Using first {j} terms for x = {i}, the approximation is {exp}")
+    print(f"True value of e^2^2 is: {np.exp(2**2)}")
+#%%
+import math
+import numpy as np
+x=2
+e_to_taylor=0
+for i in range(7):
+    e_to_taylor += x**i/math.factorial(i)
+    print(f"Using {i}- term = {e_to_taylor}")
+    print ("Actual value using Taylor Series= ",e_to_taylor)
+    print ("\n")
+    exp_py=math.exp(x)
+    print ("Actual value Using math=",exp_py)
+    print ("\n")
+    exp_np=np.exp(2)
+    for i in range(7):
+        exp_np=np.exp(2)
+        print(f"Using {i}- term = {exp_np}")
+        print ("Actual Value Using numpy=",exp_np)
+        print ("Truncation error is = ",abs(e_to_taylor-np.exp(2)))
